@@ -19,6 +19,11 @@
 </head>
 <body>
 
+    <audio id="myMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        متصفحك لا يدعم تشغيل الصوت.
+    </audio>
+
     <div id="lock-screen">
         <div class="bubble-card">
             <h2 style="color: #ffd700;">أهلاً يا أعز الناس ❤️</h2>
@@ -51,16 +56,6 @@
         </div>
 
         <div class="bubble-card">
-            <img src="pic4.jpg">
-            <span class="caption">دايماً في ضهري ومعايا في كل خطوة 🤝</span>
-        </div>
-
-        <div class="bubble-card">
-            <img src="pic5.jpg">
-            <span class="caption">يا رب العمر كله صحاب وأخوات ❤️</span>
-        </div>
-
-        <div class="bubble-card">
             <button onclick="showFinal()">كلام من القلب ❤️</button>
         </div>
     </div>
@@ -77,6 +72,13 @@
             if (pass === "14") {
                 document.getElementById('lock-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'flex';
+                
+                // 2. تشغيل الموسيقى عند الدخول
+                var audio = document.getElementById("myMusic");
+                audio.play().catch(function(error) {
+                    console.log("تعذر تشغيل الموسيقى تلقائياً: " + error);
+                });
+
                 setInterval(updateTimer, 1000);
             } else {
                 alert("الرمز غلط يا زميلتي 😉");
@@ -94,7 +96,8 @@
             document.getElementById('timer').innerHTML = `${days} يوم و ${hours} ساعة و ${mins} دقيقة و ${secs} ثانية`;
         }
 
-        const msg = "من يوم 30 يناير وحياتي بقى فيها أخت حقيقية... \n شكراً ليكي على كل مرة وقفتي جنبي فيها، \n الصداقة اللي بينا أغلى من أي حاجة ثانية، \n ربنا يديمك في حياتي يا أجدع حد عرفته ❤️";
+        const msg = "من يوم 30 يناير وحياتي مابقتش ملكي لوحدي، بقت مرتبطة بيكي في كل تفصيلة.. \n انتي مش بس أغلى صديقة، انتي الأمان اللي كنت بدور عليه، والسر اللي ببتسم أول ما بفتكره.. \n ممتن جداً للصدفة اللي جمعتنا، وممتن أكتر لكل ثانية سمحتلي أكون فيها قريب منك.. \n ربنا يخليكي ليا، وتفضلي دايماً أقرب من روحي ❤️";
+        
         let j = 0;
         function showFinal() {
             document.getElementById('main-content').style.display = 'none';
