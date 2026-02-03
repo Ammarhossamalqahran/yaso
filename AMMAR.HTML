@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى أغلى صديقة ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        body { background: radial-gradient(circle, #240046, #10002b, #000); color: white; font-family: 'Cairo', sans-serif; margin: 0; min-height: 100vh; overflow-x: hidden; }
+        .bubble-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border-radius: 30px; padding: 25px; margin: 15px auto; width: 85%; max-width: 400px; border: 1px solid rgba(255, 215, 0, 0.3); text-align: center; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); }
+        input { padding: 12px; border-radius: 50px; border: 1px solid #ffd700; background: none; color: white; text-align: center; margin-bottom: 20px; width: 70%; outline: none; font-size: 1rem; }
+        button { padding: 15px 40px; background: linear-gradient(45deg, #7b2cbf, #ffd700); color: black; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.1rem; }
+        #main-content, #final-step { display: none; flex-direction: column; align-items: center; width: 100%; }
+        #lock-screen { display: flex; height: 100vh; justify-content: center; align-items: center; width: 100%; }
+        img { width: 100%; border-radius: 20px; margin: 15px 0; border: 1px solid #ffd700; }
+        .caption { color: #ffd700; font-weight: bold; margin-bottom: 20px; display: block; }
+        #timer { font-size: 1.1rem; color: #ffd700; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <div class="bubble-card">
+            <h2 style="color: #ffd700;">أهلاً يا أعز الناس ❤️</h2>
+            <p>ادخلي الرمز السري (14)</p>
+            <input type="password" id="passInput" placeholder="Password...">
+            <br>
+            <button type="button" onclick="checkUnlock()">دخول ✨</button>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="bubble-card">
+            <h1>بقالنا أصدقاء وأخوات من... ❤️</h1>
+            <div id="timer">جاري الحساب...</div>
+        </div>
+
+        <div class="bubble-card">
+            <img src="pic1.jpg">
+            <span class="caption">الضحكة اللي بتهون أي صعب ❤️</span>
+        </div>
+
+        <div class="bubble-card">
+            <img src="pic2.jpg">
+            <span class="caption">أجدع أخت وسند في الدنيا ⚔️</span>
+        </div>
+
+        <div class="bubble-card">
+            <img src="pic3.jpg">
+            <span class="caption">ذكرياتنا اللي محفورة في القلب ✨</span>
+        </div>
+
+        <div class="bubble-card">
+            <img src="pic4.jpg">
+            <span class="caption">دايماً في ضهري ومعايا في كل خطوة 🤝</span>
+        </div>
+
+        <div class="bubble-card">
+            <img src="pic5.jpg">
+            <span class="caption">يا رب العمر كله صحاب وأخوات ❤️</span>
+        </div>
+
+        <div class="bubble-card">
+            <button onclick="showFinal()">كلام من القلب ❤️</button>
+        </div>
+    </div>
+
+    <div id="final-step">
+        <div class="bubble-card" style="margin-top: 80px;">
+            <div id="typewriter" style="line-height: 1.8; color: #ffd700; font-size: 1.3rem;"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkUnlock() {
+            var pass = document.getElementById('passInput').value;
+            if (pass === "14") {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'flex';
+                setInterval(updateTimer, 1000);
+            } else {
+                alert("الرمز غلط يا زميلتي 😉");
+            }
+        }
+
+        const startDate = new Date(2025, 0, 30); 
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+            document.getElementById('timer').innerHTML = `${days} يوم و ${hours} ساعة و ${mins} دقيقة و ${secs} ثانية`;
+        }
+
+        const msg = "من يوم 30 يناير وحياتي بقى فيها أخت حقيقية... \n شكراً ليكي على كل مرة وقفتي جنبي فيها، \n الصداقة اللي بينا أغلى من أي حاجة ثانية، \n ربنا يديمك في حياتي يا أجدع حد عرفته ❤️";
+        let j = 0;
+        function showFinal() {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('final-step').style.display = 'flex';
+            typeWriter();
+        }
+        function typeWriter() {
+            if (j < msg.length) {
+                document.getElementById("typewriter").innerHTML += msg.charAt(j);
+                j++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+    </script>
+</body>
+</html>
